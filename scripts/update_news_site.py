@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import html
 import json
+import os
 import re
 import subprocess
 import sys
@@ -245,6 +246,12 @@ def main():
         push = sh('git push origin main', cwd=ROOT, timeout=120)
         if push.returncode != 0:
             print('git push skipped/failed:', push.stderr.strip()[-300:], file=sys.stderr)
+        token = os.environ.get('CLOUDFLARE_API_TOKEN')
+        account = os.environ.get('CLOUDFLARE_ACCOUNT_ID')
+        if token and account:
+            deploy = sh('CLOUDFLARE_API_TOKEN="$CLOUDFLARE_API_TOKEN" CLOUDFLARE_ACCOUNT_ID="$CLOUDFLARE_ACCOUNT_ID" npx wrangler pages deploy . --project-name xiejunjie-site --branch main --commit-dirty=true', cwd=ROOT, timeout=300)
+            if deploy.returncode != 0:
+                print('cloudflare pages deploy skipped/failed:', deploy.stderr.strip()[-500:], file=sys.stderr)
 
 
 if __name__ == '__main__':
