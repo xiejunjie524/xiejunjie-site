@@ -24,7 +24,7 @@ SITE_TITLE = "前沿科技观察"
 SITE_URL = "https://xiejunjie.indevs.in"
 MAX_ITEMS = 8
 KEYWORDS = "AI,LLM,GPT,Claude,Agent,RAG,DeepSeek,robot,automation,model"
-CSS_VERSION = 7
+CSS_VERSION = 8
 
 
 def sh(cmd, cwd=None, timeout=180):
