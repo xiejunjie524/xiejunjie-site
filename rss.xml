@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>前沿科技观察</title>
+    <link>/</link>
+    <description>AI、数码、智能硬件与自动化工具资讯。</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 06 May 2026 01:00:00 +0800</lastBuildDate>
+    <item>
+      <title>OpenAI、马斯克与 AI 治理争议继续升温</title>
+      <link>/news.html</link>
+      <guid>/news.html#ai-governance-20260506</guid>
+      <pubDate>Wed, 06 May 2026 01:00:00 +0800</pubDate>
+      <description>AI 公司治理、模型安全和商业竞争正在成为技术产业的核心议题。</description>
+    </item>
+    <item>
+      <title>数学研究进入 AI 辅助时代</title>
+      <link>/news.html</link>
+      <guid>/news.html#ai-math-20260506</guid>
+      <pubDate>Wed, 06 May 2026 01:00:00 +0800</pubDate>
+      <description>大模型正在被用于证明辅助、文献整理和符号推理探索。</description>
+    </item>
+    <item>
+      <title>自动化平台和 Agent 工具继续受到开发者关注</title>
+      <link>/news.html</link>
+      <guid>/news.html#agent-tools-20260506</guid>
+      <pubDate>Wed, 06 May 2026 01:00:00 +0800</pubDate>
+      <description>开源生态正在围绕 Agent、RAG 和工具调用形成新的应用层基础设施。</description>
+    </item>
+  </channel>
+</rss>
