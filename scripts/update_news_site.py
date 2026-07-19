@@ -208,6 +208,7 @@ def render_news(items):
     </section>
     {end}'''
     path.write_text(source.replace(source[source.index(start):source.index(end) + len(end)], section), encoding='utf-8')
+    return
     cards = []
     for i, it in enumerate(items):
         tagcls = 'hot' if i == 0 else ('green' if it['category'] in ('开发者工具', '模型研究') else '')
