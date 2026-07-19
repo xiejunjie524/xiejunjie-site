@@ -187,6 +187,10 @@ def render_article(item, slug, idx):
 
 
 def render_news(items):
+    # Keep the hand-designed editorial news layout. The generated article files
+    # and RSS feed are still refreshed below, while news.html is maintained as
+    # a stable presentation layer instead of being replaced by the legacy card template.
+    return
     cards = []
     for i, it in enumerate(items):
         tagcls = 'hot' if i == 0 else ('green' if it['category'] in ('开发者工具', '模型研究') else '')
