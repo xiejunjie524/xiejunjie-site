@@ -187,6 +187,28 @@ def render_article(item, slug, idx):
 
 
 def render_news(items):
+    # Keep the hand-designed editorial layout, but refresh only its marked
+    # latest-news slot so new articles are visible without replacing the page.
+    path = ROOT / 'news.html'
+    if not path.exists():
+        return
+    source = path.read_text(encoding='utf-8')
+    start = '<!-- AUTO-NEWS-START -->'
+    end = '<!-- AUTO-NEWS-END -->'
+    if start not in source or end not in source:
+        return
+    cards = []
+    for i, it in enumerate(items):
+        tagcls = 'hot' if i == 0 else ('green' if it['category'] in ('开发者工具', '模型研究') else '')
+        cards.append(f'''<a class="article" href="/articles/{it['slug']}.html"><div class="date">{html.escape(it['time'][:18] or '近期')}<br>自动更新 {i + 1:02d}</div><div><span class="tag {tagcls}">{html.escape(it['category'])}</span><h3>{html.escape(it['title'])}</h3><p>{html.escape(it['summary'])}</p><div class="meta"><span>{html.escape(it['source'])}</span><span>约 3 分钟</span><span>最新信号</span></div><span class="link-more">阅读全文 →</span></div></a>''')
+    section = f'''{start}
+    <section class="section auto-news" aria-label="自动更新内容">
+      <div class="section-head editorial-head"><div><span class="eyebrow">LATEST SIGNALS</span><h2>最新更新</h2></div><p>自动抓取并整理的最新科技信号，保留原始来源入口。</p></div>
+      <div class="news-list auto-news-list">{''.join(cards)}</div>
+    </section>
+    {end}'''
+    path.write_text(source.replace(source[source.index(start):source.index(end) + len(end)], section), encoding='utf-8')
+    return
     cards = []
     for i, it in enumerate(items):
         tagcls = 'hot' if i == 0 else ('green' if it['category'] in ('开发者工具', '模型研究') else '')
